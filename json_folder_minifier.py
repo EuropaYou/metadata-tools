@@ -5,7 +5,7 @@ import pathlib
 folder = "YOUR_FOLDER_LOCATION"
 
 if os.path.exists(folder):
-    print("Folder exists! Searching the directory for JSON files.")
+    print(f"Folder exists! Searching the directory ({folder}) for JSON files.")
 
     result = list(pathlib.Path(folder).rglob("*.[jJ][sS][oO][nN]"))
     print("Search completed. Minify started.")
@@ -22,6 +22,8 @@ if os.path.exists(folder):
                 file.write(shrink)
 
         except Exception as e:
-            print(f"Coudln't process file: {item}")
+            print(f"Could not process file: {item} {e}")
 else:
-  print("Folder doesnt exist! Exitting...\n In a world where data must be compressed and meaning reimagined… one dares to transform structure into story.")
+    print(
+        "Folder does not exist! Exitting...\n In a world where data must be compressed and meaning reimagined… one dares to transform structure into story."
+    )
