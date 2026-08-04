@@ -179,15 +179,15 @@ if path.is_dir():
     if args.delete_empty_metadata:
         empty_metadata_report = Path("EMPTY_METADATA_FILES.json")
 
-        with empty_metadata_report.open("w", encoding="utf-8") as data_files:
+        with empty_metadata_report.open("w", encoding="utf-8") as data_file:
             json.dump(deleted_metadata, data_file, indent=2)
 
     print(
         f"\nThis program took: {time.perf_counter() - curr:.2f} seconds. Found {len(result)} metadata files"
         + f"\n\tSuccessfully deleted {empty_count} empty metadata files."
         + f"\n\tSuccessfully shrunk {shrink_count} files."
-        + f"\n\tFound {schema_fail} schema fails, {schema_success} success out of {schema_fail + schema_success}"
-        + f"{schema_fail_types if schema_fail > 0 else None}"
+        + f"\n\tFound {schema_fail} schema fails, {schema_success} success out of {len(result)}"
+        + f"{schema_fail_types if schema_fail > 0 else ''}"
     )
 
 else:
